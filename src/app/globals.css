@@ -8,7 +8,8 @@
 
 body {
   @apply bg-base text-ink font-body min-h-screen;
-  background: radial-gradient(circle at top, #fff9f0 0%, #f6f1ea 50%, #efe5d6 100%);
+  background: linear-gradient(135deg, #fdf4ff 0%, #fce7f3 25%, #f3e8ff 50%, #e0f2fe 75%, #fef9c3 100%);
+  background-attachment: fixed;
 }
 
 a {
@@ -24,4 +25,36 @@ h4 {
 
 p {
   @apply leading-relaxed;
+}
+
+/* Video game-style glowing borders */
+.glow-border {
+  @apply relative;
+}
+
+.glow-border::before {
+  content: "";
+  @apply absolute inset-0 rounded-2xl;
+  background: linear-gradient(135deg, #f9a8d4, #c4b5fd, #93c5fd, #fde047);
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Pixel-style checkboxes */
+input[type="checkbox"] {
+  @apply appearance-none w-5 h-5 rounded-lg border-2 border-purple cursor-pointer transition-all;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+input[type="checkbox"]:checked {
+  @apply bg-gradient-to-br from-pink to-purple-bright border-pink-bright;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+}
+
+input[type="checkbox"]:hover {
+  @apply shadow-glow;
 }
