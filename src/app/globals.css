@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-base text-ink font-body min-h-screen;
+  background: radial-gradient(circle at top, #fff9f0 0%, #f6f1ea 50%, #efe5d6 100%);
+}
+
+a {
+  @apply transition-colors;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+p {
+  @apply leading-relaxed;
+}
