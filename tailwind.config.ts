@@ -5,22 +5,55 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "#f6f1ea",
-        ink: "#1c1b19",
-        muted: "#5a534d",
-        accent: "#e16837",
-        highlight: "#2f6b59",
-        card: "#ffffff",
+        base: "#fdf4ff",
+        ink: "#2d1b4e",
+        muted: "#6b5b7d",
+        card: "rgba(255, 255, 255, 0.7)",
+        // Pastel palette
+        pink: {
+          light: "#fce7f3",
+          DEFAULT: "#f9a8d4",
+          bright: "#ec4899",
+        },
+        purple: {
+          light: "#f3e8ff",
+          DEFAULT: "#c4b5fd",
+          bright: "#a855f7",
+        },
+        blue: {
+          light: "#e0f2fe",
+          DEFAULT: "#93c5fd",
+          bright: "#3b82f6",
+        },
+        yellow: {
+          light: "#fef9c3",
+          DEFAULT: "#fde047",
+          bright: "#eab308",
+        },
       },
       boxShadow: {
-        soft: "0 24px 60px rgba(35, 24, 18, 0.08)",
+        soft: "0 8px 32px rgba(139, 92, 246, 0.15)",
+        glow: "0 0 20px rgba(249, 168, 212, 0.4)",
+        "glow-purple": "0 0 20px rgba(196, 181, 253, 0.5)",
+        "glow-blue": "0 0 20px rgba(147, 197, 253, 0.5)",
       },
       borderRadius: {
         xl: "24px",
+        "2xl": "32px",
       },
       fontFamily: {
         display: ["var(--font-display)", "Fraunces", "serif"],
         body: ["var(--font-body)", "Space Grotesk", "sans-serif"],
+      },
+      animation: {
+        "float": "float 6s ease-in-out infinite",
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
     },
   },
