@@ -14,8 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Kashi Recomp Routine",
-  description: "A clear, ADHD-friendly body recomp routine with tracking tools.",
+  title: "Glow Up Quest",
+  description: "Level up your fitness journey. ADHD-friendly body recomp with tracking tools.",
 };
 
 export default function RootLayout({
