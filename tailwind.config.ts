@@ -41,6 +41,9 @@ const config: Config = {
         xl: "24px",
         "2xl": "32px",
       },
+      borderWidth: {
+        "3": "3px",
+      },
       fontFamily: {
         display: ["var(--font-display)", "Fraunces", "serif"],
         body: ["var(--font-body)", "Space Grotesk", "sans-serif"],
@@ -52,8 +55,15 @@ const config: Config = {
         "slide-up": "slideUp 0.5s ease-out",
         "slide-in-right": "slideInRight 0.3s ease-out",
         "bounce-in": "bounceIn 0.6s ease-out",
-        "wiggle": "wiggle 0.5s ease-in-out",
+        "wiggle": "wiggle 0.5s ease-in-out infinite",
         "glow-pulse": "glowPulse 2s ease-in-out infinite",
+        "float-up": "floatUp 1.5s ease-out forwards",
+        "sink-down": "sinkDown 0.5s ease-in-out forwards",
+        "shake": "shake 0.5s ease-in-out",
+        "spin-slow": "spin 3s linear infinite",
+        "confetti-fall": "confettiFall 1s ease-out forwards",
+        "scale-pop": "scalePop 0.3s ease-out",
+        "shimmer": "shimmer 2s linear infinite",
       },
       keyframes: {
         float: {
@@ -84,6 +94,33 @@ const config: Config = {
         glowPulse: {
           "0%, 100%": { boxShadow: "0 0 20px rgba(249, 168, 212, 0.4)" },
           "50%": { boxShadow: "0 0 30px rgba(196, 181, 253, 0.6)" },
+        },
+        floatUp: {
+          "0%": { opacity: "1", transform: "translateY(0) scale(1)" },
+          "100%": { opacity: "0", transform: "translateY(-60px) scale(1.2)" },
+        },
+        sinkDown: {
+          "0%": { opacity: "1", transform: "translateY(0) scale(1)" },
+          "30%": { transform: "translateY(-8px) scale(1.02)" },
+          "100%": { opacity: "0.7", transform: "translateY(20px) scale(0.98)" },
+        },
+        shake: {
+          "0%, 100%": { transform: "translateX(0)" },
+          "10%, 30%, 50%, 70%, 90%": { transform: "translateX(-4px)" },
+          "20%, 40%, 60%, 80%": { transform: "translateX(4px)" },
+        },
+        confettiFall: {
+          "0%": { opacity: "1", transform: "translateY(0) rotate(0deg)" },
+          "100%": { opacity: "0", transform: "translateY(100px) rotate(720deg)" },
+        },
+        scalePop: {
+          "0%": { transform: "scale(0.8)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
         },
       },
     },
