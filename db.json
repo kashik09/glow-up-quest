@@ -1,0 +1,33 @@
+{
+  "me": {
+    "name": "Kashi",
+    "title": "Glow Up Quest Player",
+    "level": 7,
+    "rank": "Warrior",
+    "xp": 1280,
+    "dailyXpGoal": 200,
+    "streakDays": 5,
+    "focus": "Body recomp, consistency, and energy",
+    "startDate": "2026-02-01",
+    "timezone": "America/New_York"
+  },
+  "stats": {
+    "workoutsPerWeek": 6,
+    "restDays": 1,
+    "minutesPerDay": "20-30",
+    "equipment": "None",
+    "waterLitersPerDay": "2-3",
+    "sleepGoalHours": "7-8"
+  },
+  "goals": [
+    "Stay consistent with daily quests",
+    "Increase workout quality with better recovery",
+    "Track progress photos on Day 14 and Day 21"
+  ],
+  "notes": [
+    {
+      "date": "2026-02-14",
+      "entry": "Keep meals protein-focused and prep night routine before 20:00."
+    }
+  ]
+}
