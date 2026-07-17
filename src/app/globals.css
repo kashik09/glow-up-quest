@@ -4,57 +4,269 @@
 
 :root {
   color-scheme: light;
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lifted: 0 8px 24px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.1);
 }
 
+/* ========== BASE STYLES ========== */
 body {
-  @apply bg-base text-ink font-body min-h-screen;
-  background: linear-gradient(135deg, #fdf4ff 0%, #fce7f3 25%, #f3e8ff 50%, #e0f2fe 75%, #fef9c3 100%);
+  @apply text-ink font-body min-h-screen antialiased;
+  background: linear-gradient(180deg, #fefefe 0%, #f8f6ff 50%, #fff5f7 100%);
   background-attachment: fixed;
 }
 
-a {
-  @apply transition-colors;
+h1, h2, h3, h4 {
+  @apply font-display tracking-tight;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  @apply font-display;
+/* ========== MODERN CARD STYLES ========== */
+.card-modern {
+  @apply bg-white rounded-3xl p-6;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.2s ease;
 }
 
-p {
-  @apply leading-relaxed;
+.card-modern:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
 }
 
-/* Video game-style glowing borders */
-.glow-border {
-  @apply relative;
+/* ========== NEUMORPHIC ELEMENTS ========== */
+.neu-flat {
+  background: #ffffff;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.05),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
 }
 
-.glow-border::before {
-  content: "";
-  @apply absolute inset-0 rounded-2xl;
-  background: linear-gradient(135deg, #f9a8d4, #c4b5fd, #93c5fd, #fde047);
-  padding: 2px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.neu-pressed {
+  background: linear-gradient(145deg, #f5f5f5, #ffffff);
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
 }
 
-/* Pixel-style checkboxes */
+/* ========== PROGRESS RING ========== */
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* ========== SUBTLE ANIMATIONS ========== */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+.delay-4 { animation-delay: 0.2s; }
+.delay-5 { animation-delay: 0.25s; }
+.delay-6 { animation-delay: 0.3s; }
+
+/* ========== CHECKBOX STYLES ========== */
 input[type="checkbox"] {
-  @apply appearance-none w-5 h-5 rounded-lg border-2 border-purple cursor-pointer transition-all;
-  background: rgba(255, 255, 255, 0.8);
+  @apply appearance-none w-6 h-6 rounded-xl border-2 border-gray-200 cursor-pointer transition-all duration-200;
+  background: #fafafa;
 }
 
 input[type="checkbox"]:checked {
-  @apply bg-gradient-to-br from-pink to-purple-bright border-pink-bright;
+  @apply bg-gradient-to-br from-violet-500 to-purple-600 border-violet-500;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  animation: check-pop 0.25s ease;
 }
 
 input[type="checkbox"]:hover {
-  @apply shadow-glow;
+  @apply border-violet-300;
+}
+
+/* ========== BUTTON STYLES ========== */
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-2xl font-semibold text-white transition-all duration-200;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-2xl font-semibold transition-all duration-200;
+  background: #f4f4f5;
+  color: #3f3f46;
+}
+
+.btn-secondary:hover {
+  background: #e4e4e7;
+}
+
+/* ========== TOAST NOTIFICATIONS ========== */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+}
+
+.toast-enter {
+  animation: toast-in 0.3s ease-out forwards;
+}
+
+.toast-exit {
+  animation: toast-out 0.2s ease-in forwards;
+}
+
+/* ========== NUMBER POPUP (XP GAIN) ========== */
+@keyframes number-float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.8);
+  }
+  20% {
+    transform: translateY(-8px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.9);
+  }
+}
+
+.xp-popup {
+  animation: number-float 1s ease-out forwards;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ========== GRADIENT TEXT ========== */
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+/* ========== STAT CARD ACCENTS ========== */
+.accent-violet {
+  border-left: 4px solid #8b5cf6;
+}
+
+.accent-pink {
+  border-left: 4px solid #ec4899;
+}
+
+.accent-amber {
+  border-left: 4px solid #f59e0b;
+}
+
+.accent-emerald {
+  border-left: 4px solid #10b981;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* ========== GLASS EFFECT ========== */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
